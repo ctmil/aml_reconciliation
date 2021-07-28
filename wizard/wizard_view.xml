@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+
+        <!--Account Move lines-->
+        <record id="account_move_line_reconcile_wizard" model="ir.ui.view">
+	    <field name="name">Conciliar apuntes contables Wizard</field>
+            <field name="model">account.move.line.reconcile.wizard</field>
+            <field name="arch" type="xml">
+		    <form string="Conciliar apuntes contables Wizard">
+			    <sheet>
+				<group>
+					    <span class="o_form_label">Este asistente va a conciliar los apuntes contables seleccionados.</span>
+				    </group>
+			    </sheet>
+                	    <footer>
+                        	<button string="Confirmar" name="btn_confirm" type="object" default_focus="1" class="btn-primary"/>
+	                        <button string="Cancelar" class="btn-secondary" special="cancel"/>
+        	            </footer>
+                </form>
+            </field>
+        </record>
+
+
+
+        <record id="action_reconcile" model="ir.actions.act_window">
+            <field name="name">Conciliar apuntes contables</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.move.line.reconcile.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="account_move_line_reconcile_wizard"/>
+            <field name="context">{}</field>
+            <field name="target">new</field>
+	    <field name="help">This wizard will reconcile selected account move lines.</field>
+            <field name="binding_model_id" ref="account.model_account_move_line" />
+            <field name="binding_view_types">list</field>
+        </record>
+
+    </data>
+</odoo>
